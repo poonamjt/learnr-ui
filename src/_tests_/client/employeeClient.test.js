@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {getEmployees, getEmployee} from '../../client/employeeClient';
+import {getEmployees, getEmployee} from '../../client/EmployeeClient';
 
-    it("should fetch all employees data", async (done) => {
+it("should fetch all employees data", async (done) => {
         const employees = [{
             id: "1",
             name: "testUser"
@@ -16,17 +16,14 @@ import {getEmployees, getEmployee} from '../../client/employeeClient';
          fetch.mockReturnValueOnce(Promise.resolve(response));
          response.json.mockReturnValueOnce(Promise.resolve(employees));
 
-
-        await getEmployees()
+         await getEmployees()
             .then((actualEmployee) => {
                expect("1").toEqual(actualEmployee.employees[0].id);
                expect("testUser").toEqual(actualEmployee.employees[0].name);
                  done();
             })
              .catch(done)
-
-
-    });
+});
 
 it("should fetch employee data", async (done) => {
     const employee = {
@@ -41,7 +38,6 @@ it("should fetch employee data", async (done) => {
     fetch = jest.fn();
     fetch.mockReturnValueOnce(Promise.resolve(response));
     response.json.mockReturnValueOnce(Promise.resolve(employee));
-
 
     await getEmployee("1")
         .then((actualEmployee) => {

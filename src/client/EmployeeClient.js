@@ -1,4 +1,4 @@
- export const getEmployees = function() {
+ export const getEmployees = () => {
      return   fetch('/employees')
          .then(response => response.json())
          .then(data => {
@@ -6,8 +6,8 @@
          });
  };
 
- export const getEmployee = function(id) {
-        return fetch('/employee/id')
+ export const getEmployee = (id) => {
+        return fetch(`/employees/${id}`)
             .then(response => response.json())
             .then(data => data)
  };
