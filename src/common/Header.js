@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import employeeClient from '../client/EmployeeClient';
-
-
 
 function TabContainer(props) {
     return (
-        <Typography component="div" style={{ padding: 8 * 3 }}>
+        <Typography component="div" style={{padding: 8 * 3}}>
             {props.children}
         </Typography>
     );
@@ -21,12 +18,9 @@ TabContainer.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-const styles = theme => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-    },
-});
+const styles = {
+    background: '#1a73ba',
+};
 
 class SimpleTabs extends React.Component {
     state = {
@@ -34,23 +28,27 @@ class SimpleTabs extends React.Component {
     };
 
     handleChange = (event, value) => {
-        this.setState({ value });
+        this.setState({value});
     };
 
     render() {
-        const { classes } = this.props;
-        const { value } = this.state;
+        const {value} = this.state;
 
         return (
-            <div className={classes.root}>
+            <div>
                 <AppBar position="static">
-                    <Tabs value={value} onChange={this.handleChange}>
-                        <Tab label="Trainings" />
-                        <Tab label="Participants" />
-                        <Tab label="Trainers" />
+                    <Tabs style={styles} value={value} onChange={this.handleChange}>
+                        <Tab label="Admin"/>
+                        <Tab label="Participants"/>
+                        <Tab label="Trainers"/>
                     </Tabs>
                 </AppBar>
-                {value === 0 && <TabContainer><div><employeeClient/></div></TabContainer>}
+                {value === 0 && <TabContainer>
+                    <div>
+                        <employeeClient/>
+                    </div>
+                </TabContainer>}
+                {value === 0 && <TabContainer>Admin</TabContainer>}
                 {value === 1 && <TabContainer>Item Two</TabContainer>}
                 {value === 2 && <TabContainer>Item Three</TabContainer>}
             </div>
