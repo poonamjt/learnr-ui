@@ -6,11 +6,12 @@ import Paper from '@material-ui/core/Paper';
 
 class SimpleTabs extends React.Component {
     state = {
-        value: 2,
+        value: 0,
     };
 
     handleChange = (event, value) => {
         this.setState({value});
+        this.props.onChange(value);
     };
 
     render() {
