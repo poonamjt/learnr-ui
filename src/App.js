@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Main from './common/Main';
+import LoginComponent from './common/Main';
 import Header from "./common/Header";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 
@@ -18,7 +18,7 @@ class App extends Component {
     return (
         <MuiThemeProvider theme={theme}>
           <div className="App">
-              <Main/>
+              <LoginComponent/>
           </div>
         </MuiThemeProvider>
     );
