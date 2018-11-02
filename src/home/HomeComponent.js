@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {getEmployee} from '../client/EmployeeClient';
 import {ROLE} from "../common/constants";
 import {connect} from "react-redux";
-import {addEmployee} from "../actions";
+import {addEmployee} from "../actions/EmployeeAction";
 
 const mapDispatchToProps = dispatch => {
     return {
