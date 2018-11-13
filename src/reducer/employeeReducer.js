@@ -5,14 +5,15 @@ const initialState = {
 };
 
 const employeeReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ACTIONS.ADD_EMPLOYEE: {
-            return {...state, employee: action.payload}; }
+            const newState = {...state, employee: action.payload};
+            return newState; }
 
         default:
             return state;
     }
 };
-
 
 export default employeeReducer;

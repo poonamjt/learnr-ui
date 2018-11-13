@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import LoginComponent from './common/Main';
-import Header from "./common/Header";
+import React, {Component} from 'react';
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
+import LoginComponent from "./common/Main";
 
 const theme = createMuiTheme({
     palette: {
@@ -11,14 +10,12 @@ const theme = createMuiTheme({
     }
 });
 
-
-
 class App extends Component {
   render() {
     return (
         <MuiThemeProvider theme={theme}>
           <div className="App">
-              <LoginComponent/>
+              <LoginComponent />
           </div>
         </MuiThemeProvider>
     );

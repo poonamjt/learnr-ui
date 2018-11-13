@@ -1,5 +1,5 @@
  export const getEmployees = () => {
-     return   fetch('/employees')
+     return  fetch('/employees')
          .then(response => response.json())
          .then(data => {
              return {employees: data};
@@ -10,6 +10,15 @@
         return fetch(`/employees/${id}`)
             .then(response => response.json())
             .then(data => data)
+ };
+
+ export const getTrainings = () => {
+     return fetch('/trainings')
+         .then(response => response.json())
+         .then(data => {
+             console.log("inside client : ",data);
+             return {trainings: data};
+         });
  };
 
 

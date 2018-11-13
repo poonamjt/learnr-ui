@@ -1,48 +1,54 @@
-import React, {Component} from 'react';
-import {getEmployee} from '../client/EmployeeClient';
+import React from 'react';
 import {ROLE} from "../common/constants";
 import {connect} from "react-redux";
-import {addEmployee} from "../actions/EmployeeAction";
+import {fetchEmployee} from "../actions/EmployeeAction";
 
 const mapDispatchToProps = dispatch => {
     return {
-        addEmployee: employee => dispatch(addEmployee(employee))
+        fetchEmployee: id => dispatch(fetchEmployee(id))
     };
 };
 
+const mapStateToProps = (state) => {
+    return {employee : state.employee};
+};
 
-class HomeComponent extends Component{
+class HomeComponent extends React.Component{
     constructor(props)
     {
         super(props);
-        this.state={
-            employee: {}
-        };
+        this.props.fetchEmployee("admin");
     }
 
     setRole(){
-       getEmployee("user1")
-           .then((data) => {
-               console.log("data--------   ",data);
-               this.props.addEmployee(data);
-               this.setState({employee: data});
-               switch( data.role ){
-                   case ROLE.ADMIN :
-                       this.props.history.push("/admin");
-                       break;
-                   case ROLE.TRAINER :
-                       this.props.history.push("/trainer");
-                       break;
-                   default :
-                       this.props.history.push("/participant");
-                       break;
-               }
-           });
+
+        switch( this.props.employee.role ){
+            case ROLE.ADMIN :
+                this.props.history.push("/admin");
+                break;
+            case ROLE.TRAINER :
+                this.props.history.push("/trainer");
+                break;
+            default :
+                this.props.history.push("/participant");
+                break;
+        }
     }
-    render(){return(<div>{this.setRole()}</div>)}
+
+    render() {
+        if(this.props.employee.role) {
+            this.setRole();
+            return(
+                <div></div>
+            );
+        }
+        return(
+            <div>Loading...</div>
+        );
+    }
 }
 
-const RoutingComponent =  connect(null, mapDispatchToProps)(HomeComponent);
+const RoutingComponent =  connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
 
 
 export default RoutingComponent;
