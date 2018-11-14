@@ -1,8 +1,8 @@
 import React from "react";
-import SimpleExpansionPanel from "./SimpleExpansionPanel";
+import TrainingsPanel from "./TrainingsPanel";
 import {fetchTraining} from "../actions/TrainingAction";
 import connect from "react-redux/es/connect/connect";
-import store from "../store/store";
+import Typography from "@material-ui/core/Typography/Typography";
 
 const styles = {
     float: "left",
@@ -11,19 +11,20 @@ const styles = {
 
 const styles1 = {
    float: "right",
-    width: "75%"
+    width: "75%",
+    height:"672px",
+    backgroundColor:"#f0f0f0",
+    //paddingLeft:"10px"
 };
 
 const mapDispatchToProps = dispatch => {
-    console.log("inside mapDispatchToProps");
     return {
-        fetchTraining: () => dispatch(fetchTraining()).then(console.log("Hiiiiiiiiiii",store.state))
+        fetchTraining: () => dispatch(fetchTraining())
     };
 };
 
 const mapStateToProps = (state) => {
-    console.log("inside mapStateToProps----",state.trainings);
-    return {trainings : state.trainings};
+    return {trainings : state.trainingReducer.trainings};
 };
 
 
@@ -35,11 +36,10 @@ class TrainingComponent extends React.Component {
     }
 
     render() {
-        console.log("******** ->",this.props.trainings)
         return (
             <div>
                 <div style={styles}>abc</div>
-                <div style={styles1}><h3>TRAININGS</h3><SimpleExpansionPanel/></div>
+                <div style={styles1}><h4>&nbsp;&nbsp;TRAININGS</h4><TrainingsPanel trainings={this.props.trainings}/></div>
             </div>
         );
     }

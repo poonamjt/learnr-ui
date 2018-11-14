@@ -6,10 +6,11 @@ import AdminComponent from "../admin/AdminComponent";
 import TrainerComponent from "../trainer/TrainerComponent";
 import ParticipantComponent from "../participant/ParticipantComponent";
 import TrainingComponent from "../trainings/TrainingComponent";
+import employeeReducer from "../reducer/employeeReducer";
 
 
 const mapStateToProps = (state) => {
-  return {employee : state.employee};
+  return {employee : state.employeeReducer.employee};
 };
 
 class Main extends React.Component {

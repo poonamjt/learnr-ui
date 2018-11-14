@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state) => {
-    return {employee : state.employee};
+    return {employee : state.employeeReducer.employee};
 };
 
 class HomeComponent extends React.Component{

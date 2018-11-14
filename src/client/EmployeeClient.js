@@ -16,7 +16,6 @@
      return fetch('/trainings')
          .then(response => response.json())
          .then(data => {
-             console.log("inside client : ",data);
              return {trainings: data};
          });
  };

@@ -9,7 +9,14 @@ export const fetchTraining = ()=> {
     return (dispatch) =>{
         return getTrainings()
             .then(trainingData => {
-                console.log("################ : ",trainingData)
-                dispatch(addTrainings(trainingData))})
+                dispatch(addTrainings(trainingData.trainings))})
     }
 }
+
+// export const fetchTraining = ()=> {
+//     return (dispatch) =>{
+//         return getTrainings()
+//             .then(trainingData => {
+//                 dispatch(addTrainings(trainingData))})
+//     }
+// }

@@ -26,7 +26,7 @@ class AdminComponent extends  React.Component {
            <div>
                <AdminHeader/>
                <NavigationBar match={this.props.match} onChange={this.handleOnSelect}/>
-                <div>
+                <div style={{backgroundColor:'#f0f0f0'}}>
                {this.state.currentState === 0 && <TrainingComponent/>}
                {this.state.currentState === 1 && <ParticipantComponent/>}
                {this.state.currentState === 2 && <TrainerComponent/>}
